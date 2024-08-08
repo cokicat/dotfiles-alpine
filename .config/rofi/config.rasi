@@ -1,0 +1,7 @@
+configuration {
+	modi: "combi,drun,run,window";
+	combi-modi: "window,drun,run";
+	show-icons: true;
+	font: "Liberation Mono 12";
+ }
+@theme "Arc-Dark"

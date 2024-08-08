@@ -1,0 +1,126 @@
+#!/usr/bin/python3
+import os
+
+def check_command(command):
+    exit_code = os.system(command)
+    if exit_code!=0:
+        print(f"\033[31mError ({exit_code}): Cannot execute '{command}'.\033[0m")
+        return False
+    else:
+        return True
+            
+def prompt_update():
+    while True:
+        response=input("Update the system [Y/n] ").strip().lower()
+        if response in ["", "y", "yes"]:
+            return True
+        elif response in ["n", "no"]:
+            return False
+
+while True:
+    if os.getlogin()!="root":
+        print(f"\033[31mSorry, but only Roots are invited to this party.\033[0m")
+        break
+
+    print("""\n\033[1;35m ▄████▄   ▒█████   ██ ▄█▀ ██▓ ▄████▄   ▄▄▄     ▄▄▄█████▓  ██████
+▒██▀ ▀█  ▒██▒  ██▒ ██▄█▒ ▓██▒▒██▀ ▀█  ▒████▄   ▓  ██▒ ▓▒▒██    ▒
+▒▓█    ▄ ▒██░  ██▒▓███▄░ ▒██▒▒▓█    ▄ ▒██  ▀█▄ ▒ ▓██░ ▒░░ ▓██▄
+▒▓▓▄ ▄██▒▒██   ██░▓██ █▄ ░██░▒▓▓▄ ▄██▒░██▄▄▄▄██░ ▓██▓ ░   ▒   ██▒
+▒ ▓███▀ ░░ ████▓▒░▒██▒ █▄░██░▒ ▓███▀ ░ ▓█   ▓██▒ ▒██▒ ░ ▒██████▒▒
+░ ░▒ ▒  ░░ ▒░▒░▒░ ▒ ▒▒ ▓▒░▓  ░ ░▒ ▒  ░ ▒▒   ▓▒█░ ▒ ░░   ▒ ▒▓▒ ▒ ░
+  ░  ▒     ░ ▒ ▒░ ░ ░▒ ▒░ ▒ ░  ░  ▒     ▒   ▒▒ ░   ░    ░ ░▒  ░ ░
+░        ░ ░ ░ ▒  ░ ░░ ░  ▒ ░░          ░   ▒    ░      ░  ░  ░
+░ ░          ░ ░  ░  ░    ░  ░ ░            ░  ░              ░
+░                            ░
+▓█████▄  ▒█████  ▄▄▄█████▓  █████▒██▓ ██▓    ▓█████   ██████
+▒██▀ ██▌▒██▒  ██▒▓  ██▒ ▓▒▓██   ▒▓██▒▓██▒    ▓█   ▀ ▒██    ▒
+░██   █▌▒██░  ██▒▒ ▓██░ ▒░▒████ ░▒██▒▒██░    ▒███   ░ ▓██▄
+░▓█▄   ▌▒██   ██░░ ▓██▓ ░ ░▓█▒  ░░██░▒██░    ▒▓█  ▄   ▒   ██▒
+░▒████▓ ░ ████▓▒░  ▒██▒ ░ ░▒█░   ░██░░██████▒░▒████▒▒██████▒▒
+ ▒▒▓  ▒ ░ ▒░▒░▒░   ▒ ░░    ▒ ░   ░▓  ░ ▒░▓  ░░░ ▒░ ░▒ ▒▓▒ ▒ ░
+ ░ ▒  ▒   ░ ▒ ▒░     ░     ░      ▒ ░░ ░ ▒  ░ ░ ░  ░░ ░▒  ░ ░
+ ░ ░  ░ ░ ░ ░ ▒    ░       ░ ░    ▒ ░  ░ ░      ░   ░  ░  ░
+   ░        ░ ░                   ░      ░  ░   ░  ░      ░\033[0m\n""")
+
+    if check_command("apk --version"):
+        print("\033[32mFound 'apk'.\033[0m")
+    else:
+        break
+
+    if prompt_update():
+        if check_command("apk update && apk upgrade"):
+            print("\033[32mSuccessfully updated.\033[0m")
+        else:
+            break
+
+    # Install fonts
+    if check_command("apk add font-ubuntu font-liberation font-liberation-mono-nerd"):
+        print("\033[32mFonts successfully installed.\033[0m")
+    else:
+        break
+        
+    # Install X11
+    if check_command("setup-xorg-base && apk add xf86-input-evdev xf86-input-synaptics setxkbmap xrandr"):
+        print("\033[32mX11 successfully installed.\033[0m")
+    else:
+        break
+
+    # Install JWM
+    if check_command("apk add jwm"):
+        print("\033[32mJWM successfully installed.\033[0m")
+    else:
+        break
+
+    # Install Bash
+    if check_command("apk add bash bash-completion"):
+        print("\033[32mBash successfully installed.\033[0m")
+    else:
+        break
+
+    # Install tools & editors
+    if check_command("apk add neofetch sudo curl python3 zip unzip 7zip git github-cli htop feh nano vim micro"):
+        print("\033[32mTools & editors successfully installed.\033[0m")
+    else:
+        break
+
+    # Install compilers
+    if check_command("apk add gcc make automake autoconf"):
+        print("\033[32mCompilers successfully installed.\033[0m")
+    else:
+        break
+       
+    # Install graphical applications
+    if check_command("apk add thunar file-roller alacritty firefox network-manager-applet"):
+        print("\033[32mGraphical applications successfully installed.\033[0m")
+    else:
+        break
+
+    # GTK libs (Qogir dependecies)
+    if check_command("apk add sassc gtk-engines gtk-murrine-engine"):
+        print("\033[32mGTK libs successfully installed.\033[0m")
+    else:
+        break
+
+    # Install Qogir-theme & Qogir-icon-theme
+    if check_command("git clone https://github.com/vinceliuice/Qogir-theme") and\
+    check_command("cd Qogir-theme && ./install.sh -d /usr/share/themes") and\
+    check_command("git clone https://github.com/vinceliuice/Qogir-icon-theme") and\
+    check_command("cd Qogir-icon-theme && ./install.sh -d /usr/share/icons -t default"):
+        print("\033[32mQogir-theme & Qogir-icon-theme successfully installed.\033[0m")
+    else:    
+        print("\033[31mError while installing Qogir-theme & Qogir-icon-theme.\033[0m")
+        break
+
+    # Install dotfiles
+    if check_command("cp .jwm* .xinitrc .Xdefaults .gtkrc-2.0 aperture.jpg ~/") and\
+    check_command("cp .bashrc .profile .vimrc ~/") and\
+    check_command("cp -r .config/alacritty .config/rofi .config/gtk-3.0 .config/gtk-4.0 ~/.config/"):
+        print("\033[32mDotfiles successfully installed.\033[0m")
+    else:    
+        print("\033[31mError while installing dotfiles\033[0m")
+        break
+
+    check_command("source ~/.bashrc && source ~/.profile"):
+
+    print("\033[32mDone!\nYou can reboot now.\033[0m")
+    break

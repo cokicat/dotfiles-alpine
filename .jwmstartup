@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<JWM>
+	<StartupCommand>setxkbmap us</StartupCommand>
+	<StartupCommand>xrandr -s 1920x1080</StartupCommand>
+	<StartupCommand>feh --bg-fill aperture.jpg</StartupCommand>
+</JWM>
