@@ -13,9 +13,7 @@
 		<Include>$HOME/.jwmmenu</Include>
 		<Separator/>
 		<Exit confirm="true" label="Exit"/>
-		<Restart label="Restart"/>
-		<Program label="Reboot">alacritty -e "sudo reboot"</Program>
-		<Program label="Power Off">alacritty -e "sudo reboot"</Program>
+		<Restart label="Restart JWM"/>
 	</RootMenu>
 
 
@@ -140,11 +138,6 @@
 	<Key mask="4" key="Return">exec: alacritty</Key>
 
 	<Key mask="C" key="space">exec: rofi -show combi</Key>
-
-	<Key key="XF86AudioRaiseVolume">exec: pactl set-sink-volume @DEFAULT_SINK@ +10%</Key>
-	<Key key="XF86AudioLowerVolume">exec: pactl set-sink-volume @DEFAULT_SINK@ -10%</Key>
-	<Key key="XF86AudioMute">exec: pactl set-sink-mute @DEFAULT_SINK@ toggle</Key>
-	<Key key="XF86AudioMicMute">exec: pactl set-source-mute @DEFAULT_SOURCE@ toggle</Key>
 	
 	<Key key="Up">up</Key>
 	<Key key="Down">down</Key>
