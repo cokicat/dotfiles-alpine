@@ -90,7 +90,7 @@ while True:
         break
        
     # Install graphical applications
-    if check_command("apk add thunar file-roller alacritty firefox network-manager-applet"):
+    if check_command("apk add thunar file-roller alacritty firefox network-manager-applet rofi"):
         print("\033[32mGraphical applications successfully installed.\033[0m")
     else:
         break
