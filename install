@@ -115,7 +115,7 @@ while True:
     if check_command("cp .jwm* .xinitrc .Xdefaults .gtkrc-2.0 aperture.jpg ~/") and\
     check_command("cp .bashrc .profile .vimrc ~/") and\
     check_command("mkdir ~/.config") and\
-    check_command("cp -r .config/alacritty .config/rofi .config/gtk-3.0 .config/gtk-4.0 ~/.config/"):
+    check_command("cp -r .config/alacritty/ .config/rofi/ .config/gtk-*.0/ ~/.config/"):
         print("\033[32mDotfiles successfully installed.\033[0m")
     else:    
         print("\033[31mError while installing dotfiles\033[0m")
