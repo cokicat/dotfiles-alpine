@@ -16,7 +16,7 @@ http://dl-cdn.alpinelinux.org/alpine/edge/main
 http://dl-cdn.alpinelinux.org/alpine/edge/communinity
 ```
 This will enable the community repository.  
-Next, as root, install `python3` which is required by `install` file.
+You can now, install `python3` as root, which is required by `install` file.
 ```
 apk add python3
 ``` 
