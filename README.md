@@ -1,3 +1,4 @@
+![The script](screenshot.png)
 # Easily setup Alpine Linux
 This script prepares Alpine to be ready for use after installation.  
 It automatically installs a lightweight desktop, some useful utilities and my dotfiles to Alpine.  
