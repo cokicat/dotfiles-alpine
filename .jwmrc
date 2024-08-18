@@ -14,6 +14,8 @@
 		<Separator/>
 		<Exit confirm="true" label="Exit"/>
 		<Restart label="Restart JWM"/>
+		<Program label="Reboot">alacritty -e sudo reboot</Program>
+		<Program label="Power Off">alacritty -e sudo poweroff</Program>
 	</RootMenu>
 
 
